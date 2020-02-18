@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2020-02-18T05:45:36Z" name="Default suite" finished-at="2020-02-18T05:46:23Z" duration-ms="46511">
+    <groups>
+    </groups>
+    <test started-at="2020-02-18T05:45:36Z" name="Default test" finished-at="2020-02-18T05:46:23Z" duration-ms="46511">
+      <class name="com.xem.qa.testcases.dataAttributesTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.xem.qa.testcases.dataAttributesTest@3f57bcad]" started-at="2020-02-18T05:45:36Z" name="setup" finished-at="2020-02-18T05:46:15Z" duration-ms="38512" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="VerefyCreationOfNewDataAttributes()[pri:0, instance:com.xem.qa.testcases.dataAttributesTest@3f57bcad]" started-at="2020-02-18T05:46:15Z" name="VerefyCreationOfNewDataAttributes" finished-at="2020-02-18T05:46:22Z" duration-ms="6739" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerefyCreationOfNewDataAttributes -->
+        <test-method is-config="true" signature="flush()[pri:0, instance:com.xem.qa.testcases.dataAttributesTest@3f57bcad]" started-at="2020-02-18T05:46:22Z" name="flush" finished-at="2020-02-18T05:46:23Z" duration-ms="1135" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- flush -->
+      </class> <!-- com.xem.qa.testcases.dataAttributesTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

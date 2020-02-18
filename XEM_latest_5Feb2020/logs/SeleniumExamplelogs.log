@@ -1,0 +1,9 @@
+[INFO ] 2020-02-18 11:15:52.990 [main] Log4jUtil - launching browser
+[INFO ] 2020-02-18 11:16:15.322 [main] Log4jUtil - Login Successfully
+[INFO ] 2020-02-18 11:16:19.386 [main] Log4jUtil - Clicked on DataAttribute
+[INFO ] 2020-02-18 11:16:20.126 [main] Log4jUtil - Clicked on NewModel link
+[INFO ] 2020-02-18 11:16:20.522 [main] Log4jUtil - Clicked on model class
+[INFO ] 2020-02-18 11:16:20.622 [main] Log4jUtil - New Model Name inserted
+[INFO ] 2020-02-18 11:16:21.432 [main] Log4jUtil - Class set selected from list
+[INFO ] 2020-02-18 11:16:21.750 [main] Log4jUtil - Vector Type Selected fromlist 
+[INFO ] 2020-02-18 11:16:22.061 [main] Log4jUtil - New Attribute successfully created

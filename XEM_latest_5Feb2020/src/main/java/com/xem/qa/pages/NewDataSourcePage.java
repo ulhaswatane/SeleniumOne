@@ -1,0 +1,205 @@
+package com.xem.qa.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import com.xem.qa.base.TestBase;
+import com.xem.qa.util.TestUtil;
+
+public class NewDataSourcePage extends TestBase {
+
+	static TestUtil testUtil;
+	String ActualTitle = "New Source";
+	WebDriverWait wait;
+	DataStrategyPage dataStrategyPage;
+	String name = DataStrategyPage.getClassName();
+
+	@FindBy(xpath = "//a/span[contains(text(),'Data Sources')]")
+	WebElement DataSourceLink;
+
+	// @FindBy (xpath="//div[@class='digest-sources popup-inner-block-bg altStyle
+	// height-stretch scroll-x']/preceding::/div[1]")
+	// WebElement AddNewDataSource;
+
+	// @FindBy(xpath = "//*[normalize-space(text()'Add'])[5]/following::div[11]")
+	@FindBy(xpath = "/html/body/div[2]/div[5]/div/div/main/section[46]/div[5]/div[1]/div[2]/div/div[1]/div[1]")
+	WebElement AddNewDataSource;
+
+	@FindBy(xpath = "//input[@name='taskJobName']")
+	WebElement NewDataSourceName;
+
+	@FindBy(xpath = "//div/h4[@class='task-job-bind text-primary text-center']")
+	WebElement NewSourceName;
+
+	@FindBy(xpath = "//textarea[@name='taskJobDescription']")
+	WebElement NewDataSouceDiscription;
+
+	@FindBy(xpath = "//section[@id='digestSourceComposeWidget']/div[2]/div/div[2]/div[2]/form/div[5]/div/span")
+	WebElement DoNotPerformMatchingforthisDataSourceRadioBtn;
+
+	@FindBy(xpath = "//input[@name='taskJobCronExpression']")
+	WebElement setFrequency;
+
+	// select Expected Frequency
+	@FindBy(xpath = "//section[@id='digestSourceComposeWidget']/div[2]/div/div[2]/div[2]/form/div[7]/div/select")
+	WebElement selectExpectedFrequency;
+
+	// Enter Email Adress
+	@FindBy(xpath = "//input[@name='emailAddresses']")
+	WebElement EmailAdress;
+
+	// Select Sample File
+
+	@FindBy(xpath = "//div/label[contains(text(),'Sample File')]/following::div[2]")
+	WebElement SelectSampleFile;
+
+//Select Data Source file from Archive
+	public void SelectDataSourceFile() throws InterruptedException {
+
+		try {
+			List<WebElement> FileList = driver.findElements(By.xpath("//div[@class='name']"));
+
+			for (int i = 0; i < FileList.size(); i++) {
+				String SampleFileName = FileList.get(i).getText();
+				if (SampleFileName.equals("--unicode2")) {
+					FileList.get(i).click();
+					Thread.sleep(5000);
+				}
+				List<WebElement> ArchiveList = driver.findElements(By.xpath("//div[@class='name']"));
+
+				for (int j = 0; j < ArchiveList.size(); j++) {
+					String ArchiveList1 = ArchiveList.get(j).getText();
+					if (ArchiveList1.equals("seleniumdatasource.csv")) {
+						ArchiveList.get(j).click();
+						break;
+					}
+
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+		}
+	}
+
+	@FindBy(xpath = "//div/div/button[contains(text(),'Ok')]")
+	WebElement PreviewOkBtn;
+
+	@FindBy(xpath = "//div/button[contains(text(),'Done')]")
+	WebElement DoneBtn;
+
+	@FindBy(xpath = "//div[@title='Next']")
+	WebElement nextBtn;
+
+	@FindBy(xpath = "//h4[contains(text(),'Things')]/parent::div")
+	WebElement thingsBtn;
+
+	@FindBy(xpath = "//select[@name='classSets']")
+	WebElement selectDataset;
+
+//	@FindBy(xpath = "//option[text()='SubclassForDataSource']")
+//	WebElement selectStorage;
+
+	@FindBy(xpath = "//div/button[contains(text(),'Create')]")
+	WebElement CreatClassBtn;
+	/*
+	 * //Select file for Mask
+	 * 
+	 * @FindBy(xpath="//input[@name='taskJobFileLocation']") WebElement
+	 * FileNameMask;
+	 * 
+	 * //Select Archive forlder
+	 * 
+	 * @FindBy(xpath="//div/input[contains(text(),'Archive Folder')") WebElement
+	 * ArchiveFolder ;
+	 * 
+	 * 
+	 * 
+	 * @FindBy(
+	 * xpath="//div/span[contains(@class='checkbox checkbox-inline task-job-bind margin-0')"
+	 * ) WebElement NoCSVHeaderChkBox ;
+	 */
+
+	public NewDataSourcePage() {
+		PageFactory.initElements(driver, this);
+	}
+
+	public void CreateNewDataSourcePage() throws InterruptedException {
+
+		// Thread.sleep(5000);
+		DataSourceLink.click();
+
+		// Thread.sleep(5000);
+		/*
+		 * Actions actions = new Actions(driver);
+		 * actions.moveToElement(AddNewDataSource).perform();
+		 */
+		AddNewDataSource.click();
+
+		// Thread.sleep(3000);
+		NewDataSourceName.sendKeys("SeleniumTest");
+
+		// Thread.sleep(3000);
+		NewDataSouceDiscription.sendKeys("Selenium Data Source File");
+
+		// Thread.sleep(3000);
+		DoNotPerformMatchingforthisDataSourceRadioBtn.click();
+
+		// Thread.sleep(3000);
+		setFrequency.sendKeys("");
+
+		// Thread.sleep(3000);
+		Select drop = new Select(selectExpectedFrequency);
+		drop.selectByVisibleText("DAILY");
+
+		EmailAdress.sendKeys("uwatane@r4.ai");
+
+		// Thread.sleep(5000);
+		SelectSampleFile.click();
+
+		// Thread.sleep(5000);
+		SelectDataSourceFile();
+
+		// Thread.sleep(5000);
+		PreviewOkBtn.click();
+
+		// Thread.sleep(5000);
+		DoneBtn.click();
+
+		// Thread.sleep(5000);
+		nextBtn.click();
+
+		// Thread.sleep(5000);
+		thingsBtn.click();
+
+		// Thread.sleep(5000);
+		Select classSet = new Select(selectDataset);
+		classSet.selectByVisibleText(name);
+
+		// Thread.sleep(2000);
+		CreatClassBtn.click();
+		/*
+		 * FileNameMask.click();
+		 * 
+		 * 
+		 * ArchiveFolder.sendKeys("");
+		 * 
+		 * // This will Toggle the Check box NoCSVHeaderChkBox.click();
+		 * 
+		 * // Check whether the Check box is toggled on if
+		 * (NoCSVHeaderChkBox.isSelected()) {
+		 * System.out.println("Checkbox is Toggled On");
+		 * 
+		 * } else { System.out.println("Checkbox is Toggled Off"); }
+		 */
+
+	}
+}
